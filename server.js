@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 
 app.post('/sms', function(req, res) {
     var challenge = new twilio.TwimlResponse();
-    challenge.sms('body:' + req.body.body + ' from:' + req.body.from);
+    challenge.sms('Body:' + req.body.Body + ' From:' + req.body.From + ' SmsSid:' + req.body.SmsSid);
 
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(challenge.toString());
