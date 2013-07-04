@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 5000;
-var twilio = require('twilio')('AC5176f9a3c768040fd0870342bbb2631e', '91fbafa8b064b3cd3bb9f3778d1b948b');
+var twilio = require('twilio');
+var twilioClient = twilio('AC5176f9a3c768040fd0870342bbb2631e', '91fbafa8b064b3cd3bb9f3778d1b948b');
 
 app.use(express.logger());
 app.use(express.bodyParser());
@@ -12,12 +13,10 @@ app.get('/', function(request, response) {
 
 app.post('/sms', function(req, res) {
     var challenge = new twilio.TwimlResponse();
+    challenge.sms('body:' + req.body.body + ' from:' + req.body.from);
 
-    console.log(req)
-
-    challenge.sms('Are you sure?');
     res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
+    res.end(challenge.toString());
 });
 
 app.get('/horoscope/:number', function(req, res) {
