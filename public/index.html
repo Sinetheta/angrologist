@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Angrologist</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <h1>The Angrologist</h1>
+
+        <form>
+            <input type="text" name="phone" id="input-phone" value="12505169042">
+            <select name="sign" id="input-sign">
+                <option>Aries</option>
+                <option>Taurus</option>
+                <option>Gemini</option>
+                <option>Cancer</option>
+                <option>Leo</option>
+                <option>Virgo</option>
+                <option>Libra</option>
+                <option>Scorpio</option>
+                <option>sagittarius</option>
+                <option>capricorn</option>
+                <option>Aquarius</option>
+                <option>Pisces</option>
+            </select>
+            <button type="submit">Call</button>
+        </form>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>
+        jQuery(document).ready(function($) {
+            $('form').submit(function(e) {
+                var phone = $('#input-phone').val();
+                var sign = $('#input-sign').val();
+
+                window.location = '/callnow/' + sign + '/' + phone;
+
+                e.preventDefault();
+            });
+        });
+        </script>
+    </body>
+</html>
